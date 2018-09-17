@@ -107,11 +107,13 @@ const MARBLE_AFFECTION                  = "Marble_Affection";
 const MARBLE_WARNING                    = "Marble_Warning";
 const NO_MORE_MARBLE                    = "No_More_Marble";
 const MARBLE_RAPE_ATTEMPTED             = "Marble_Rape_Attempted";
-const MURBLE_FARM_TALK_LEVELS           = "Marble_Farm_Talk_Levels";
+const MARBLE_FARM_TALK_LEVELS           = "Marble_Farm_Talk_Levels";
+const MARBLE_ADDICTION_LEVEL 			= "Marble_Addiction_Level"
+
 
 //Amily
 const AMILY_VILLAGE_ACCESSIBLE			= "Amily_Village_Accessible"; // Can you access the Town Ruins?
-const AMILY_VILLAGE_EXPLORED             = "Amily_Village_Explored";  // How many times has the TownRuins been explored? Used in achievement.
+const AMILY_VILLAGE_EXPLORED            = "Amily_Village_Explored";  // How many times has the TownRuins been explored? Used in achievement.
 const AMILY_MET                         = "Amily_Met" // Has Amily been met yet?
 const AMILY_PC_GENDER                   = "Amily_PC_Gender"; // Used for gender checks with Amily to switch between scenes.
 const AMILY_MET_AS                      = "Amily_Met_As"; // Marks the player gender that met with Amily.

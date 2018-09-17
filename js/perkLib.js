@@ -28,7 +28,7 @@ PerkLib.Enlightenment = new PerkType("Enlightenment", "Enlightenment", "Jojo’s
 
 //Marble
 PerkLib.MarblesMilk = new PerkType("MarblesMilk", "Marble's Milk", "Add Marble's Milk perk description in perkLib.js");
-
+PerkLib.MarbleResistant = new PerkType("MarbleResistant", "Marble Resistant", "Add Marble Reisistant perk description in perkLib.js")
 
 //Ovipositing
 PerkLib.BeeOvipositor = new PerkType("BeeOvipositor", "Bee Ovipositor", "Bee Ovipositor Description to be added.");

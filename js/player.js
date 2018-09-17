@@ -85,6 +85,7 @@ function Player() {
 	this.originalRace = "human";
 }
 Player.prototype = new Creature();
+Player.prototype.constructor = Player;
 
 var tempStr = 0;
 var tempTou = 0;

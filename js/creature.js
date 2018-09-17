@@ -719,13 +719,13 @@ Creature.prototype.addStatusValue = function(stype, valueIdx, bonus) {
     if (counter < 0) return;
     if (valueIdx < 1 || valueIdx > 4) return;
     if (valueIdx == 1)
-        this.statusEffects[stype].value1 += bonus;
+        this.statusEffects[counter].value1 += bonus;
     if (valueIdx == 2)
-        this.statusEffects[stype].value2 += bonus;
+        this.statusEffects[counter].value2 += bonus;
     if (valueIdx == 3)
-        this.statusEffects[stype].value3 += bonus;
+        this.statusEffects[counter].value3 += bonus;
     if (valueIdx == 4)
-        this.statusEffects[stype].value4 += bonus;
+        this.statusEffects[counter].value4 += bonus;
 }
 Creature.prototype.changeStatusValue = function(stype, valueIdx, newNum) {
     var counter = this.findStatusEffect(stype);
@@ -733,13 +733,13 @@ Creature.prototype.changeStatusValue = function(stype, valueIdx, newNum) {
     if (counter < 0) return;
     if (valueIdx < 1 || valueIdx > 4) return;
     if (valueIdx == 1)
-        this.statusEffects[stype].value1 = newNum;
+        this.statusEffects[counter].value1 = newNum;
     if (valueIdx == 2)
-        this.statusEffects[stype].value2 = newNum;
+        this.statusEffects[counter].value2 = newNum;
     if (valueIdx == 3)
-        this.statusEffects[stype].value3 = newNum;
+        this.statusEffects[counter].value3 = newNum;
     if (valueIdx == 4)
-        this.statusEffects[stype].value4 = newNum;
+        this.statusEffects[counter].value4 = newNum;
 }
 
 //-------

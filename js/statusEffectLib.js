@@ -31,6 +31,18 @@ StatusEffects.Eggs = new StatusEffectType("Eggs");
 StatusEffects.Uniball = new StatusEffectType("Uniball"); //TODO: Check code to see if this would be better as a gameflag
 
 //------------
+// NPC
+//------------
+// Marble
+StatusEffects.Marble = new StatusEffectType("Marble");
+StatusEffects.MarbleHasItem = new StatusEffectType("MarbleHasItem");
+StatusEffects.MarbleItemCooldown = new StatusEffectType("MarbleItemCooldown");
+StatusEffects.MarbleRapeAttempted = new StatusEffectType("Marble Rape Attempted");
+StatusEffects.MarblesMilk = new StatusEffectType("Marbles Milk");
+StatusEffects.MarbleSpecials = new StatusEffectType("MarbleSpecials");
+StatusEffects.MarbleWithdrawl = new StatusEffectType("MarbleWithdrawl");
+
+//------------
 // COMBAT
 //------------
 //Buffs
