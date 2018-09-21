@@ -5,12 +5,18 @@ addToGameFlags(FARM_DISABLED, FARM_CORRUPTION_STARTED, MET_WHITNEY, WHITNEY_FLIP
 Places.Farm.farmExploreEncounter = function() {
     clearOutput();
     displaySprite("whitney");
+	
+	// Corruption part (NOT DONE YET) TODO
     /*if (flags[kFLAGS.FARM_CORRUPTION_STARTED] > 0)
     {
         farmCorruption.rootScene();
         return;
     }
-    if (farmCorruption.takeoverPrompt() == true) return;*/
+	
+    if (farmCorruption.takeoverPrompt() == true) return;
+	*/
+	
+	// Checks if Farm is disabled (You did something mean to Kelt or Marble :p)
     if (gameFlags[FARM_DISABLED] == 1)
     {
         outputText("Whitney marches up to you as soon as you approach the farm, a stoic expression plastered across her face.");
@@ -19,14 +25,14 @@ Places.Farm.farmExploreEncounter = function() {
         //addButton(1, "FIGHT!", fightWhitney);
         return;
     }
-    /*if (gameFlags[FARM_DISABLED] == 2)
+	else if (gameFlags[FARM_DISABLED] == 2)
     {
         outputText("Whitney marches up to you as soon as you approach the farm, a stoic expression plastered across her face.");
-        outputText("<br><br>\"<i>What the fuck do you think you're doing here [name]? After what you did to Kelt you still think you're welcome here? Leave. <b>Now</b>.</i>\"");
+        outputText("<br><br>\"<i>What the fuck do you think you're doing here " + player.name + "? After what you did to Kelt you still think you're welcome here? Leave. <b>Now</b>.</i>\"");
         doNext(Camp.returnToCampUseOneHour);
         //addButton(1, "FIGHT!", fightWhitney);
         return;
-    }*/
+    }
 
     var temporary = 0;
     //Farm not yet discovered
@@ -41,10 +47,13 @@ Places.Farm.farmExploreEncounter = function() {
         gameFlags[MET_WHITNEY]++;
         Inventory.takeItem(Items.Consumables.CaninePepper, Camp.returnToCampUseOneHour);
     }
-    //Repeat Offender
+	
+    //The Farm have already been discovered
     else {
         clearOutput();
         gameFlags[MET_WHITNEY]++; //Used for progress towards achievement.
+		
+		// You killed KELT and haven't been BANNED from the farm yet!
         if (gameFlags[KELT_KILLED] >= 1) {
             outputText("As soon as you approach the farm, Whitney comes storming up to meet you. \"<i>What the fuck have you done?!</i>\"");
             outputText("<br><br>You hold your hands up, knowing full-well what the angry bitch is on about. She angrily says \"<i>You've fucking killed Kelt the centaur! He may be rude and I don't like him but still, what you've done is wrong. You're not welcome on my farm anymore! Leave. <b>Now.</b></i>\"");
@@ -52,6 +61,7 @@ Places.Farm.farmExploreEncounter = function() {
             doNext(Camp.returnToCampUseOneHour);
             return;
         }
+		// You turned KELT into KELLY and WHITNEY haven't flipped yet
         if (gameFlags[KELT_BREAK_LEVEL] >= 4 && gameFlags[WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) {
             outputText("As soon as you head to the farm, Whitney comes storming up to meet you. \"<i>What in tarnation do you think you're pulling?!</i>\"");
             outputText("<br><br>You hold your hands up, knowing full-well what the angry bitch is on about. \"<i>I didn't do anything he wouldn't have done to me.</i>\"");
@@ -60,27 +70,41 @@ Places.Farm.farmExploreEncounter = function() {
             outputText("<br><br>She spins about and trots back to her farm, picking up a pitchfork as she goes. It looks like you won't have access to the farm any more, at least until you come up with a way to deal with Whitney.");
             gameFlags[WHITNEY_FLIPPED_OUT_OVER_KELLY] = 1;
         }
+		// You turned KELT into KELLY nd WHITNEY have flipped
         else if (gameFlags[WHITNEY_FLIPPED_OUT_OVER_KELLY] > 0) outputText("You aren't welcome on the farm proper, but you can see Kelly cantering about the fields, looking for you.");
-        else outputText("Whitney's farm is remarkably large for such a humble operation. What do you want to do?");
-        menu();
+        // Normal Farm Encounter 
+		else outputText("Whitney's farm is remarkably large for such a humble operation. What do you want to do?");
+        
+		menu();
+
+		// You know KELT 
         /*if (gameFlags[KELT_MET] >= 0 && gameFlags[KELT_DISABLED] < 0 && gameFlags[KELT_KILLED] <= 0) {
             if (gameFlags[KELT_BREAK_LEVEL] >= 4) addButton(4,"Kelly",kelly.breakingKeltOptions);
             else addButton(4,"Kelt",kelly.breakingKeltOptions);
         }*/
+		
         //choices("Explore",exploreFarm,"Kelt",keltEvent,"Get Milked",milkYou,"Marble",marble,"Milk Jojo",milkJojo,"Milk Cock",cockMilk,"Talk",talkWhitney,"Work",workFarm,"",0,"Leave",13);
+		
+		// Normal Farm Encounter (KELT isn't KELLY)
         if (gameFlags[WHITNEY_FLIPPED_OUT_OVER_KELLY] == 0) {
             addButton(0, "Explore", Places.Farm.exploreFarm);
             addButton(1, "Talk", WhitneyScene.talkWhitney);
             addButton(2, "Work", Places.Farm.workFarm);
+			
+			// Check for if you can talk with Marble
             if (gameFlags[MARBLE_RAPE_ATTEMPTED] == 0 && gameFlags[NO_MORE_MARBLE] == 0 && gameFlags[MARBLE_MET] > 0 && gameFlags[MARBLE_WARNING] == 0) {
                 addButton(3,"Marble", MarbleScene.meetMarble);
             }
+			
+			// Check for if PLAYER can get his/her BREASTs milked
             /*if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") >= 0) {
                 if (player.findStatusEffect(StatusEffects.Milked) >= 0) {
                     outputText("<br><br><b>Your " + player.nippleDescript(0) + "s are currently too sore to be milked. You'll have to wait a while.</b>");
                 }
                 else addButton(5, "Get Milked", getMilked);
             }
+			
+			// Check for if PLAYER can get his/her DICK milked
             if (player.hasKeyItem("Cock Milker - Installed At Whitney's Farm") >= 0 && player.cockTotal() > 0) {
                 addButton(6, "Milk Cock", cockPumping);
             }*/
@@ -91,41 +115,48 @@ Places.Farm.farmExploreEncounter = function() {
 
 Places.Farm.exploreFarm = function() {
     clearOutput();
+	
     //Marble after-rape
     if (gameFlags[MARBLE_RAPE_ATTEMPTED] > 0 && gameFlags[NO_MORE_MARBLE] <= 0) {
         MarbleScene.marbleAfterRapeBattle();
         gameFlags[NO_MORE_MARBLE] = 1;
         return;
     }
+	
     //FIND CARROT!
     /*if (kGAMECLASS.xmas.xmasMisc.nieveHoliday() && flags[kFLAGS.NIEVE_STAGE] == 3 && player.hasKeyItem("Carrot") < 0) {
         kGAMECLASS.xmas.xmasMisc.findACarrot();
         return;
     }*/
+	
     //Free Isabella Milkings!
     /*if (player.hasCock() && flags[kFLAGS.FOUND_ISABELLA_AT_FARM_TODAY] == 0 && flags[kFLAGS.ISABELLA_MILKED_YET] < 0 && kGAMECLASS.isabellaFollowerScene.isabellaFollower() && flags[kFLAGS.ISABELLA_MILK_COOLDOWN] == 0 && rand(2) == 0) {
         kGAMECLASS.isabellaFollowerScene.findIzzyMilking();
         return;
     }*/
+	
     //Meet Marble First Time
     if (gameFlags[MARBLE_MET] <= 0 && gameFlags[NO_MORE_MARBLE] <= 0) {
-		player.modStats("str", 1);
         MarbleScene.encounterMarbleInitially();
         return;
     }
+	
     //Meet kelt first time
     if (rand(2) == 0 && gameFlags[KELT_MET] <= 0 && gameFlags[KELT_DISABLED] <= 0) {
         KeltScene.keltEncounter();
         doNext(Camp.returnToCampUseOneHour); // Probably shouldn't be here
         return;
     }
-    //In withdrawl odds are higher.
-    /*if (player.findStatusEffect(StatusEffects.NoMoreMarble) < 0 && player.findStatusEffect(StatusEffects.MarbleWithdrawl) >= 0) {
-        if (player.statusEffectValue(StatusEffects.Marble, 3) == 1) MarbleScene.addictedEncounterHappy();
-        else MarbleScene.encounterMarbleAddictedAshamed();
+	
+    //In withdrawl you meet Marble
+    if (gameFlags[NO_MORE_MARBLE] < 0 && player.findStatusEffect(StatusEffects.MarbleWithdrawl) >= 0) {
+        if (gameFlags[MARBLE_ADDICTION_LEVEL] == 1) MarbleScene.encounterAddictedHappy();
+        else MarbleScene.encounterAddictedAshamed();
         return;
-    }*/
-    var explore = rand(3);
+    }
+	
+	// Normal explore events
+    var explore = rand(4);
     //[JOG]
     if (explore == 0) {
         displaySprite("whitney");
@@ -200,7 +231,7 @@ Places.Farm.exploreFarm = function() {
 Places.Farm.workFarm = function() {
     clearOutput();
     //In withdrawl odds are higher.
-    if (player.findStatusEffect(StatusEffects.NoMoreMarble) < 0 && player.findStatusEffect(StatusEffects.MarbleWithdrawl) >= 0) {
+    if (gameFlags[NO_MORE_MARBLE] == 0 && player.findStatusEffect(StatusEffects.MarbleWithdrawl) >= 0) {
         if (gameFlags[MARBLE_ADDICTION_LEVEL] == 1) MarbleScene.encounterAddictedHappy();
         else MarbleScene.encounterAddictedAshamed();
         return;
@@ -208,7 +239,7 @@ Places.Farm.workFarm = function() {
     //1/3 chance of Marble
     if (rand(3) == 0 && gameFlags[NO_MORE_MARBLE] == 0 && gameFlags[MARBLE_MET] > 0) {
         //Rape Override normal
-        if (gameFlags[MARBLE_RAPE_ATTEMPTED] >= 0 || gameFlags[MARBLE_WARNING] == 3) {
+        if (gameFlags[MARBLE_RAPE_ATTEMPTED] > 0 || gameFlags[MARBLE_WARNING] == 3) {
             MarbleScene.marbleAfterRapeBattle();
             gameFlags[NO_MORE_MARBLE] = 1;
             return;
@@ -265,8 +296,10 @@ Places.Farm.workFarm = function() {
         outputText("You steel yourself, ignore your ");
         if (player.faceType == FACE_DOG) outputText("sensitive ");
         outputText("nose, and set to work.");
+		
         //[Lust increase based on libido, degree of cow/mino features]
-        player.changeLust("lus", player.cowScore() + player.minoScore());
+        player.changeLust(player.cowScore() + player.minoScore());
+		
         outputText("<br><br>An hour later you can stand it no more and exit the milking barn. Gulping down the fresher air and dragging the tools back to their shed, you admit to yourself that Whitney is a much harder worker and has a stronger constitution than you thought. You promise yourself you'll come back and help her out some more -- as soon as your nose recovers.");
         //always +1 str till 50, then 50% chance.
         if (player.str <= 50)

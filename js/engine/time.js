@@ -5,6 +5,8 @@ Time = [];
 
 // Global array for loading in pregnancies and other things that are time sensitive.
 var timeAware = [];
+var timeAwareLong = [];
+
 
 Time.increment = function() {
 	time.minutes++;
@@ -18,19 +20,43 @@ Time.increment = function() {
 	}
 }
 
+// Add function to the timeAware array
+Time.addTimeAware = function(func) {
+	timeAware.push(func);
+}
+Time.addTimeAwareLong = function(func) {
+	timeAwareLong.push(func);
+}
 
 Time.advanceMinutes = function(minutes) {
-	//if (timeAware.length > 0) { // If there's a function in timeAware
-	//	for (i = 0; i < timeAware.length; i++) {
-	//		timeAware[i].advanceTime(minutes);
-
-	//	}
-		for (i = 0; i < minutes; i++) {
-			Time.increment();
-			player.pregnancyAdvance(); // Advances the Player's pregnancy.
-			amily.pregnancyAdvance(); // Advances Amily's pregnancy.
-			tamanipreg.pregnancyAdvance(); //Advances Tamani's pregnancy.
+	// I do not think this is the right place for advancing pregnancies... They should be added as timeAware!
+	for (i = 0; i < minutes; i++) {
+		Time.increment();
+		
+		// Run timeAware functions
+		if (timeAware.length > 0) {
+			for (j = 0; j < timeAware.length; j++) {
+				timeAware[j]();
+			}
 		}
+		
+		// Other stuff
+		//player.pregnancyAdvance(); // Advances the Player's pregnancy.
+		//amily.pregnancyAdvance(); // Advances Amily's pregnancy.
+		//tamanipreg.pregnancyAdvance(); //Advances Tamani's pregnancy.
+		// Run timeAwareLong functions
+		if (timeAwareLong.length > 0) {
+			for (j = 0; j < timeAwareLong.length; j++) {
+				var somethingHappend = timeAwareLong[j]();
+				if(somethingHappend) {
+					outputText("<br><br> SOMETHING HAPPEND <br><br>");
+					return;
+				}
+			}
+		}
+	}
+	// Update timer;
+	refreshStats();
 	//pregnancyProgression.updatePregnancy(); // Outputs the results of the Player's pregnancy flags once time passes.
 }
 

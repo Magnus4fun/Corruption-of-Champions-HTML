@@ -41,6 +41,8 @@ StatusEffects.MarbleRapeAttempted = new StatusEffectType("Marble Rape Attempted"
 StatusEffects.MarblesMilk = new StatusEffectType("Marbles Milk");
 StatusEffects.MarbleSpecials = new StatusEffectType("MarbleSpecials");
 StatusEffects.MarbleWithdrawl = new StatusEffectType("MarbleWithdrawl");
+StatusEffects.BottledMilk = new StatusEffectType("BottledMilk")
+
 
 //------------
 // COMBAT

@@ -3,9 +3,10 @@ Items.Consumables = {};
 //------------
 // STANDARD
 //------------
+
 Items.Consumables.BeeHoney = new Item("BeeHony", "Bee Honey", "a small vial filled with giant-bee honey", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.BeeHoney.description = "This fine crystal vial is filled with a thick amber liquid that glitters dully in the light. You can smell a sweet scent, even though it is tightly corked.";
-Items.Consumables.BeeHoney.consumeEffect = ConsumableEffects.beeTFs(0);
+Items.Consumables.BeeHoney.consumeEffect = createCallBackFunction(ConsumableEffects.beeTFs, 0);
 
 Items.Consumables.CaninePepper = new Item("CanineP", "Canine Pp", "a canine pepper", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.CaninePepper.description = "The pepper is shiny and red, bulbous at the base but long and narrow at the tip. It smells spicy.";
@@ -46,7 +47,7 @@ Items.Consumables.GoblinAle.consumeEffect = ConsumableEffects.goblinTFs;
 
 Items.Consumables.GoldenSeed = new Item("G.Seed", "Golden Seed", "a golden seed", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.GoldenSeed.description = "This seed looks and smells absolutely delicious.  Though it has an unusual color, the harpies prize these nuts as delicious treats.  Eating one might induce some physical transformations.";
-Items.Consumables.GoldenSeed.consumeEffect = ConsumableEffects.harpyTFs(0);
+Items.Consumables.GoldenSeed.consumeEffect = createCallBackFunction(ConsumableEffects.harpyTFs, 0);
 
 Items.Consumables.Hummanus = new Item("Hummus ", "Hummanus", "a small jar of hummus", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.Hummanus.description = "This is a small jar with label that reads, \"<i>Hummanus</i>\". If the name clues you in, this might be how humanity is regained.";
@@ -58,7 +59,7 @@ Items.Consumables.ImpFood.consumeEffect = ConsumableEffects.impTFs;
 
 Items.Consumables.LaBova = new Item("LaBova", "La Bova", "a bottle containing a misty fluid labeled \"LaBova\"", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.LaBova.description = "A bottle containing a misty fluid with a grainy texture, it has a long neck and a ball-like base.  The label has a stylized picture of a well endowed cowgirl nursing two guys while they jerk themselves off.";
-Items.Consumables.LaBova.consumeEffect = ConsumableEffects.cowTFs(true, false);
+Items.Consumables.LaBova.consumeEffect = createCallBackFunction(ConsumableEffects.cowTFs, true, false);
 
 Items.Consumables.Lactaid = new Item("Lactaid", "Lactaid", "a pink bottle labelled \"Lactaid\"", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.Lactaid.description = "Judging by the name printed on this bottle, 'Lactaid' probably has an effect on the ability to lactate, and you doubt that effect is a reduction.";
@@ -70,7 +71,7 @@ Items.Consumables.MinotaurBlood.consumeEffect = ConsumableEffects.minotaurTFs;
 
 Items.Consumables.MinotaurCum = new Item("M.Cum", "MinoCum", "a sealed bottle of minotaur cum", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.MinotaurCum.description = "This bottle of minotaur cum looks thick and viscous.  You know it has narcotic properties, but aside from that its effects are relatively unknown.";
-Items.Consumables.MinotaurCum.consumeEffect = ConsumableEffects.minotaurCum(false);
+Items.Consumables.MinotaurCum.consumeEffect = createCallBackFunction(ConsumableEffects.minotaurCum, false);
 Items.Consumables.MinotaurCum.value = 60;
 
 Items.Consumables.PigTruffle = new Item("PigTruf", "Pig Truffle", "a pigtail truffle", ITEM_TYPE_CONSUMABLE);
@@ -79,7 +80,7 @@ Items.Consumables.PigTruffle.consumeEffect = ConsumableEffects.pigTFs;
 
 Items.Consumables.PureHoney = new Item("PurHon", "Pure Honey", "a crystal vial filled with glittering honey", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.PureHoney.description = "This fine crystal vial is filled with a thick amber liquid that glitters in the light.  You can smell a sweet scent, even though it is tightly corked.";
-Items.Consumables.PureHoney.consumeEffect = ConsumableEffects.beeTFs(1);
+Items.Consumables.PureHoney.consumeEffect = createCallBackFunction(ConsumableEffects.beeTFs, 1);
 Items.Consumables.PureHoney.value = 40;
 
 Items.Consumables.Reptilum = new Item("Reptilum", "Reptilum", "a vial of Reptilum", ITEM_TYPE_CONSUMABLE);
@@ -92,7 +93,7 @@ Items.Consumables.SnakeOil.consumeEffect = ConsumableEffects.snakeTFs;
 
 Items.Consumables.SpecialHoney = new Item("SPHoney", "Special Honey", "a bottle of special bee honey", ITEM_TYPE_CONSUMABLE);
 Items.Consumables.SpecialHoney.description = "A clear crystal bottle of a dark brown fluid that you got from the bee handmaiden.  It gives off a strong sweet smell even though the bottle is still corked.";
-Items.Consumables.SpecialHoney.consumeEffect = ConsumableEffects.beeTFs(2);
+Items.Consumables.SpecialHoney.consumeEffect = createCallBackFunction(ConsumableEffects.beeTFs, 2);
 Items.Consumables.SpecialHoney.value = 20;
 
 Items.Consumables.TrapOil = new Item("TrapOil", "TrapOil", "a vial of trap oil.", ITEM_TYPE_CONSUMABLE);
@@ -139,7 +140,6 @@ Items.Consumables.SuccubiMilkPurified = new Item("PSDelit", "PSDelit", "an untai
 Items.Consumables.SuccubiMilkPurified.description = "This precious fluid is often given to men a succubus intends to play with for a long time.  It has been partially purified by Rathazul to prevent corruption.";
 Items.Consumables.SuccubiMilkPurified.consumeEffect = createCallBackFunction(ConsumableEffects.succubiDelight, true);
 Items.Consumables.SuccubiMilkPurified.value = 20;
-
 
 //------------
 // NON-TFs
@@ -195,6 +195,10 @@ Items.Consumables.WhiteBook.description = "This white book is totally unmarked, 
 Items.Consumables.WhiteBook.consumeEffect = ConsumableEffects.whiteSpellBook;
 Items.Consumables.WhiteBook.value = 40;
 
+Items.Consumables.MarbleMilk = new Item("M. Milk", "M. Milk", "a clear bottle of milk from Marble", ITEM_TYPE_CONSUMABLE);
+Items.Consumables.MarbleMilk.description = "A clear bottle of milk from Marble's breasts. It smells delicious.";
+Items.Consumables.MarbleMilk.consumeEffect = ConsumableEffects.marbleMilk;
+
 
 //------------
 // DYES/OILS/LOTIONS
@@ -235,3 +239,5 @@ Items.Consumables.BodyLotionSmooth = new BodyLotion("SmthLtn", "Smooth", "smooth
 Items.Consumables.BlackEgg = new Item("BlEgg", "Black Egg", "a black egg");
 
 Items.Consumables.LBlackEgg = new Item("LBlEgg", "L.Black Egg", "a large black egg");
+
+//Items.Consumables.LargeEgg = new Item();

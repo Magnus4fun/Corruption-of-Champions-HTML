@@ -2072,13 +2072,54 @@ Creature.prototype.hasKnot = function(arg) {
     return this.cocks[arg].hasKnot();
 }
 
-//PLACEHOLDER
+//Different Cocks Amount
 Creature.prototype.dogCocks = function() {
-    outputText("Placeholder for dogCocks in creature.js. Returning.")
-    doNext(Camp.returnToCampUseOneHour);
+    return this.countCocksOfType(CockTypesEnum.DOG);
 }
 
+Creature.prototype.anemoneCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.ANEMONE);
+}
 
+Creature.prototype.catCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.CAT);
+}
+
+Creature.prototype.displacerCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.DISPLACER);
+}
+
+Creature.prototype.demonCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.DEMON);
+}
+
+Creature.prototype.dragonCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.DRAGON);
+}
+
+Creature.prototype.foxCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.FOX);
+}
+
+Creature.prototype.horseCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.HORSE);
+}
+
+Creature.prototype.kangaCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.KANGA);
+}
+
+Creature.prototype.lizardCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.LIZARD);
+}
+
+Creature.prototype.normalCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.HUMAN);
+}
+
+Creature.prototype.tentacleCocks = function() {
+	return this.countCocksOfType(CockTypesEnum.TENTACLE);
+}
 
 Creature.prototype.cockHead = function(cockNum) {
     if (cockNum == undefined) cockNum = 0;
@@ -3626,10 +3667,11 @@ Creature.prototype.pregnancyAdvance = function() {
     if (this.pregnancyIncubation < 0) this.pregnancyIncubation = 0;
     if (this.buttPregnancyIncubation > 0) this.buttPregnancyIncubation--;
     if (this.buttPregnancyIncubation < 0) this.buttPregnancyIncubation = 0;
-    // If there's something in the pregnancy event array, find out what event we're on.
+    
+	// If there's something in the pregnancy event array, find out what event we're on.
     if (this.pregnancyEventArr.length > 1) {
         for (j = 0; j < this.pregnancyEventArr.length; j++) {
-            if (this.pregnancyIncubation < this.pregnancyEventArr[j]) {
+            if (this.pregnancyIncubation < (this.pregnancyEventArr[j] * 60)) {
                 //outputText("Setting new flag to " + (j + 1));
                 this.pregnancyEventNum = j + 1;
             }
@@ -3637,7 +3679,7 @@ Creature.prototype.pregnancyAdvance = function() {
     }
     if (this.buttPregnancyEventArr.length > 1) {
         for (j = 0; j < this.buttPregnancyEventArr.length; j++) {
-            if (this.buttPregnancyIncubation < this.buttPregnancyEventArr[j]) {
+            if (this.buttPregnancyIncubation < (this.buttPregnancyEventArr[j] * 60)) {
                 //outputText("Setting new flag to " + (j + 1));
                 this.buttPregnancyEventNum = j + 1;
             }

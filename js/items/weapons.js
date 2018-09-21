@@ -17,9 +17,28 @@ Items.Weapons.Pipe.attack = 5;
 Items.Weapons.WizardStaff = new Item("W.Staff", "W. Staff", "a wizard's staff", ITEM_TYPE_WEAPON);
 Items.Weapons.WizardStaff.description = "This staff is made of very old wood and seems to tingle to the touch.  The top has an odd zig-zag shape to it, and the wood is worn smooth from lots of use.  It probably belonged to a wizard at some point and would aid magic use.";
 Items.Weapons.WizardStaff.equipmentName = "wizard's staff";
-Items.Weapons.WizardStaff.verb = (player.findPerk(PerkLib.StaffChanneling) >= 0 ? "shot" : "smack"); //TODO Test this
+//Items.Weapons.WizardStaff.verb = (player.findPerk(PerkLib.StaffChanneling) >= 0 ? "shot" : "smack"); //TODO Test this
 Items.Weapons.WizardStaff.value = 350;
 Items.Weapons.WizardStaff.attack = 3;
 // TODO Weapon also adds a perk. Need to see how to add this in upon equip. "Wizard's Focus", PerkLib.WizardsFocus, 0.4, 0, 0, 0
 
+// Marble's Large Hammer
+Items.Weapons.LargeHammer = new Item("L.Hammr", "L.Hammr", "Marble's large hammer", ITEM_TYPE_WEAPON);
+Items.Weapons.LargeHammer.equipmentName = "large hammer";
+Items.Weapons.LargeHammer.description = "This two-handed warhammer looks pretty devastating.  You took it from Marble after she refused your advances.";
+Items.Weapons.LargeHammer.verb = "smash";
+Items.Weapons.LargeHammer.value = 90;
+Items.Weapons.LargeHammer.attack = 16;
+
+Items.Weapons.LargeHammer.perk = "large";
+Items.Weapons.LargeHammer.useText = function() {
+	outputText("You equip " + Items.Weapons.LargeHammer.longName + ". ")
+}
+
+Items.Weapons.LargeHammer.canUse = function() {
+	// Can only equip if tall enough
+	if (game.player.tallness >= 60) return true;
+	else outputText("This hammer is too large for you to wield effectively.  ");
+	return false;
+}
 

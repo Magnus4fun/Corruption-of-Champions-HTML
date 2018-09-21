@@ -132,8 +132,8 @@ Camp.doMasturbate = function() {
     clearOutput();
     outputText("(Placeholder) You masturbate furiously, cumming buckets.");
     player.orgasm();
-    Time.advanceMinutes(30 - Math.floor(player.sen / 4));
     doNext(Camp.doCamp);
+    Time.advanceMinutes(30 - Math.floor(player.sen / 4));
 };
 
 Camp.doSleep = function() {
@@ -148,28 +148,28 @@ Camp.doSleep = function() {
 
 //UTILS
 Camp.returnToCampUseOneHour = function() {
-	Time.advanceHours(1);
 	Camp.doCamp();
+	Time.advanceHours(1);
 };
 
 Camp.returnToCampUseTwoHours = function() {
-	Time.advanceHours(2);
 	Camp.doCamp();
+	Time.advanceHours(2);
 };
 
 Camp.returnToCampUseFourHours = function() {
-	Time.advanceHours(4);
 	Camp.doCamp();
+	Time.advanceHours(4);
 };
 
 Camp.returnToCampUseEightHours = function() {
-	Time.advanceHours(8);
 	Camp.doCamp();
+	Time.advanceHours(8);
 };
 
 Camp.returnToCampUseCustomMinutes = function(minutes) {
-	Time.advanceMinutes(minutes);
 	Camp.doCamp();
+	Time.advanceMinutes(minutes);
 };
 
 Camp.bedDesc = function() {

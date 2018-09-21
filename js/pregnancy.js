@@ -1,6 +1,6 @@
 PregnancyStore = [];
 
-//Pregancy types. Both butt and normal. Each type represents the father of this baby.
+//Father of pregnancy.
 
 const PREGNANCY_MINOTAUR              =   2;
 const PREGNANCY_MOUSE                 =   4;
@@ -23,7 +23,7 @@ const PREGNANCY_URTA                  =  21;
 const PREGNANCY_SAND_WITCH            =  22;
 const PREGNANCY_FROG_GIRL             =  23;
 const PREGNANCY_FAERIE                =  24; //Indicates you are carrying either a phouka or faerie baby. Which one is determined by the PREGNANCY_CORRUPTION flag
-//const PREGNANCY_PLAYER                =  25; //The player is the father. Will be used when an NPC is able to have children from multiple different fathers.
+// const PREGNANCY_PLAYER                =  25; //The player is the father. Will be used when an NPC is able to have children from multiple different fathers.
 
 const PREGNANCY_SANDTRAP_FERTILE      =  27;
 const PREGNANCY_SANDTRAP              =  28;
@@ -37,6 +37,8 @@ const PREGNANCY_BEHEMOTH              =  35;
 const PREGNANCY_PHOENIX               =  36;
 const PREGNANCY_ANDY                  =  37; //This is functionally the same as Satyr but less corrupt. 10% chance of fauns, if ever implemented.
 
+
+// Stage of Pregnancy 
 const PREG_NOT_PREGANT                =   0; //The PREG_* consts are returned by the size function
 const PREG_NO_SIGNS_UNKNOWN           =   1; //NPC has conceived but doesn’t know she’s pregnant, no visible signs
 const PREG_NO_SIGNS_KNOWN             =   2; //NPC is in the first trimester, knows she’s pregnant
@@ -52,7 +54,7 @@ const PREG_VERY_OVERDUE               =   9; //NPC is very overdue. Probably tri
 //Old Value, replaced in Saves.unFuckSave()        const PREGNANCY_BUTT_SANDTRAP_FERTILE =   4;
 //Old Value, replaced in Saves.unFuckSave()        const PREGNANCY_BUTT_SANDTRAP         =   5; //Sandtrap did not have fertilized eggs
 
-
+// Time of pregnancy
 const INCUBATION_MINOTAUR             = 432;
 
 const INCUBATION_OVIELIXIR_EGGS       =  50;
@@ -66,6 +68,7 @@ const INCUBATION_IZMA                 = 300;
 const INCUBATION_SPIDER               = 400;
 const INCUBATION_BASILISK             = 250;
 
+const INCUBATION_TAMANI               = 216;
 const INCUBATION_GOO_GIRL             =  85;
 const INCUBATION_EMBER                = 336;
 const INCUBATION_SATYR                = 160;

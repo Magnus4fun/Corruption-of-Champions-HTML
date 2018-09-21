@@ -13,6 +13,7 @@ addToGameFlags(TAMANI_MET, TAMANI_TIME_OUT, TAMANI_BAD_ENDED, TAMANI_DAUGHTER_PR
 //Changes Tamani chest description depending on how much she's been impregnated.
 TamaniScene.tamaniChest = function() {
     var descript = "";
+	// Descripe what her size is
     switch (gameFlags[TAMANI_TIMES_IMPREGNATED]) {
         case -1:
         case  0: descript = (rand(2) == 0 ? "ample " : "handful of "); break;
@@ -28,6 +29,7 @@ TamaniScene.tamaniChest = function() {
         case 10: descript = (rand(2) == 0 ? "over-proportioned " : "super-sized "); break;
         default: descript = (rand(2) == 0 ? "massive " : "gigantic "); break;
     }
+	// Descripe what her breast are called
     switch (rand(11)) {
         case  0:
         case  1:
@@ -37,9 +39,8 @@ TamaniScene.tamaniChest = function() {
         case  5: return descript + "muffins";
         case  6: return descript + "knockers";
         case  7: return descript + "love-pillows";
-        default:
+        default: return descript + "breasts";
     }
-    return descript + "breasts";
 };
 
 
@@ -1059,8 +1060,7 @@ TamaniScene.tamaniStartFight = function() {
 
 TamaniScene.tamaniKnockUp = function() {
     if (tamanipreg.isPregnant()) return; //Already preggers
-    tamanipreg.knockUpForce(PREGNANCY_PLAYER, 216, INCUBATION_TAMANI_EVENT); //Nine day long pregnancy
-    tamanipreg.eventFill(INCUBATION_TAMANI_EVENT); //Converts hours into minutes for finer event tracking.
+    tamanipreg.knockUpForce(PREGNANCY_PLAYER, INCUBATION_TAMANI, INCUBATION_TAMANI_EVENT);
     //Determine how many kids...
     gameFlags[TAMANI_PREGNANCY_COUNT] = 2;
     var cum = player.cumQ();
@@ -1178,7 +1178,7 @@ TamaniScene.tamaniGivesBirth = function() {
         gameFlags[TAMANI_PREGNANCY_COUNT] = 0;
         gameFlags[TAMANI_TIMES_IMPREGNATED]++;
     }
-    tamanipreg.knockUpForce(0, 0); //Clear Pregnancy
+    tamanipreg.knockUpForce(PREG_NOT_PREGANT, 0); //Clear Pregnancy
 };
 
 //--------

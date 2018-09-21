@@ -108,7 +108,24 @@ const MARBLE_WARNING                    = "Marble_Warning";
 const NO_MORE_MARBLE                    = "No_More_Marble";
 const MARBLE_RAPE_ATTEMPTED             = "Marble_Rape_Attempted";
 const MARBLE_FARM_TALK_LEVELS           = "Marble_Farm_Talk_Levels";
-const MARBLE_ADDICTION_LEVEL 			= "Marble_Addiction_Level"
+const MARBLE_ADDICTION_LEVEL 			= "Marble_Addiction_Level";
+const MARBLE_PURIFICATION_STAGE			= "Marble_Purification_Stage";
+const MARBLE_PURIFICATION_COUNTER		= "Marble_Purification_Counter";
+const MARBLE_TIME_SINCE_NURSED			= "Marble_Time_Since_Nursed"; // In minutes
+const MARBLE_WARNED_ABOUT_CORRUPTION 	= "Marble_Warned_About_Corruption";
+const MARBLE_LUST 						= "MARBLE_LUST";
+const MARBLE_NURSERY_CONSTRUCTION 		= "MARBLE_NURSERY_CONSTRUCTION";
+const MARBLE_ITEM_COOLDOWN 				= "MARBLE_ITEM_COOLDOWN";
+const MARBLE_HAS_ITEM					= "MARBLE_HAS_ITEM";
+const MARBLE_PLAYED_WITH_KIDS_TODAY 	= "MARBLE_PLAYED_WITH_KIDS_TODAY";
+const MARBLE_PURIFIED					= "MARBLE_PURIFIED";
+const MARBLE_BOYS						= "MARBLE_BOYS";
+const MARBLE_DICK_TYPE					= "MARBLE_DICK_TYPE";
+const MARBLE_KIDS						= "MARBLE_KIDS"; 
+const FOLLOWER_AT_FARM_MARBLE 			= "FOLLOWER_AT_FARM_MARBLE";
+const MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT = "MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT";
+const MARBLE_DRANK_MILK_MORNING			= "MARBLE_DRANK_MILK_MORNING";
+const MARBLE_VISITED_POST_ADDICTION		= "MARBLE_VISITED_POST_ADDICTION";
 
 
 //Amily
